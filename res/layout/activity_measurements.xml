@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/ic_bg"
+    android:orientation="vertical" >
+
+    <CheckBox
+        android:id="@+id/checkBox_shirt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Color_Black"
+        android:onClick="shirtChecked"
+        android:text="@string/checkBox_addMeasurement_shirt"
+        android:textColor="@color/Color_darkGreen"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText_shirtMeasurement"
+        android:layout_width="match_parent"
+        android:layout_height="144dp"         
+    	android:layout_margin="3dp"
+        android:ems="10"
+        android:textColor="@color/Color_White"
+        android:hint="@string/editText_shirtMeasurement"
+        android:imeOptions="actionDone" 
+        android:inputType="number|textPostalAddress">
+        <requestFocus />
+    
+    </EditText>
+	
+    <CheckBox
+        android:id="@+id/checkBox_pant"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Color_Black"
+        android:onClick="PantChecked"
+        android:text="@string/checkBox_addMeasurement_pant"
+        android:textColor="@color/Color_darkGreen"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText_pantMeasurement"
+        android:layout_width="match_parent"
+        android:layout_height="144dp"
+        android:layout_margin="3dp"       
+        android:ems="10"
+        android:textColor="@color/Color_White"
+        android:hint="@string/editText_pantMeasurement"
+        android:imeOptions="actionDone"
+        android:inputType="number|textPostalAddress"
+        android:onClick="PantDetailsClicked" />
+                
+
+    <Button
+        android:id="@+id/button_addMeasurementSave"
+        style="@style/ButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_addMeasurementSave"  
+   		android:layout_margin="2dp"
+   		android:onClick="addCustomerDetails"/>
+
+</LinearLayout>
