@@ -19,7 +19,7 @@ public class AddMeasurement extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurements); 
         Ctxt = this;
-        
+        //testing changes
         Button btnSaveMeasurement = (Button) findViewById(R.id.button_addMeasurementSave);
         
         btnSaveMeasurement.setOnClickListener(new OnClickListener() {
