@@ -60,7 +60,8 @@ public class SearchCustomerByName extends Activity {
 				public void onItemClick(AdapterView<?> parent, View view, int arg2,
 						long arg3) {
 					String custNumSelected = ((TextView)(view).findViewById(R.id.text2)).getText().toString();
-					String custNum =custNumSelected.substring(custNumSelected.length()- 2); 
+					int pos = custNumSelected.indexOf(':');
+					String custNum =custNumSelected.substring(pos+1); 
 					long custNumber = Long.parseLong(custNum);
 					
 					//Toast.makeText(Ctxt, "you pressed on customer:"+ custNumber, Toast.LENGTH_SHORT).show();
