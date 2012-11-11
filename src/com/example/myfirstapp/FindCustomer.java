@@ -103,29 +103,19 @@ public class FindCustomer extends Activity {
         	
 			public void onClick(View v)  {
 				
-				EditText CustNameField = (EditText)findViewById(R.id.textView_searchByName);
-				int CustNameTxtLen = CustNameField.getText().length();
+				EditText CustNameField = (EditText)findViewById(R.id.textView_searchByName);								
+				String custName = CustNameField.getText().toString();
 				
-				if(CustNameTxtLen != 0){
-					
-						String custName = CustNameField.getText().toString();
-						Bundle bundle = new Bundle();			
-						bundle.putString("custName",custName );	
-						
-						Intent intent = new Intent(Ctxt,SearchCustomerByName.class);				
-						/* sending the customer details to next activity 			 */
-						
-						intent.putExtras(bundle);			
-						
-						//start the activity
-						
-						Ctxt.startActivity(intent);	
-						
-				}
-				else{
-					
-					Toast.makeText(Ctxt, R.string.alertTxt_FindCustomer_byName_empty, Toast.LENGTH_SHORT).show();
-				}
+				Bundle bundle = new Bundle();			
+				bundle.putString("custName",custName );	
+				
+				Intent intent = new Intent(Ctxt,SearchCustomerByName.class);	
+				
+				/* sending the customer details to next activity 			 */			
+				intent.putExtras(bundle);				
+				//start the activity
+				
+				Ctxt.startActivity(intent);	
 			}	
 		});
         

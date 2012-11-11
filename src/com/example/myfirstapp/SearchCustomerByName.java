@@ -36,13 +36,20 @@ public class SearchCustomerByName extends Activity {
         Bundle custDetailsBundle = this.getIntent().getExtras();        
         final String custName = custDetailsBundle.getString("custName");
         
-        TextView headerText = (TextView)findViewById(R.id.textView_searchCust_Name_Header);  
+        TextView headerText = (TextView)findViewById(R.id.textView_searchCust_Name_Header);
+        
+        if(custName.contentEquals("")){
+        	
+        	headerText.setText("Showing all customers..");
+        }
+        else{
+        	
+        	headerText.setText(" Customer names with '" + custName + "'");
+        }
                
         mCursor = getCustDetailsByName(custName);
         
         if(mCursor.getCount() != 0){
-        	
-        	headerText.setText(" Customer names with '" + custName + "'");
         	
         	mListView = (ListView)findViewById(R.id.listView_searchCust_Name);
 	        
@@ -100,9 +107,16 @@ public class SearchCustomerByName extends Activity {
     
     private Cursor getCustDetailsByName(String custName) {
 		
+    	Cursor nCursor = null;
     	CustomerTable custTable = new CustomerTable(Ctxt);
     	custTable.open();
-    	Cursor nCursor = custTable.fetchCustomerByName(custName);
+    	if(custName.contentEquals("")){
+    		
+    		nCursor = custTable.fetchAllCutomers();
+    	}
+    	else{
+    		nCursor = custTable.fetchCustomerByName(custName);
+    	}
 		custTable.close();	
 		from = new String[] {custTable.KEY_ROWID, custTable.KEY_NAME};
 		return nCursor;		
