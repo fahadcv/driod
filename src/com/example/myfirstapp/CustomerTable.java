@@ -93,7 +93,7 @@ public class CustomerTable {
 		
 		Cursor mCursor = 
 				mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME,KEY_MOBILE, KEY_ADDRESS, KEY_SHIRTDETAILS, KEY_PANTDETAILS},
-						null, null, null, null,"'"+ KEY_NAME+"'ASC", null);
+						null, null, null, null,KEY_NAME, null);
 		if (mCursor !=null){
 			mCursor.moveToFirst();
 		}
