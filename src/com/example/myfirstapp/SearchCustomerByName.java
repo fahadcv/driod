@@ -48,7 +48,7 @@ public class SearchCustomerByName extends Activity {
                
         mCursor = getCustDetailsByName(custName);
         
-        if(mCursor.getCount() != 0){
+        if(mCursor.getCount() > 1){
         	
         	mListView = (ListView)findViewById(R.id.listView_searchCust_Name);
 	        
@@ -99,7 +99,18 @@ public class SearchCustomerByName extends Activity {
 				}
 			});
         
-        }
+        }else if(mCursor.getCount() == 1){
+       	 custDetailsBundle = getBundle(mCursor);
+			
+			Intent intent = new Intent(Ctxt,SearchCustomerResult.class);				
+			/* sending the customer details to next activity 			 */
+			
+			intent.putExtras(custDetailsBundle);			
+			
+			//start the activity
+			
+			Ctxt.startActivity(intent);
+       }
         else{
         	
         	headerText.setText(" No customer found with name '" + custName + "'");
