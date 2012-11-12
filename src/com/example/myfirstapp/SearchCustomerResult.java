@@ -17,11 +17,12 @@ import android.widget.Toast;
 public class SearchCustomerResult extends Activity {
 	
 	Context Ctxt;	
-     
+	String searchedCustName = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_customer_result);
+        
         Ctxt =this;    
         
         Bundle custDetailsBundle = this.getIntent().getExtras();
@@ -32,6 +33,7 @@ public class SearchCustomerResult extends Activity {
         final String details = custDetailsBundle.getString("custDetails");
         final String shirtDetails = custDetailsBundle.getString("custShirtDetails");
         final String pantDetails = custDetailsBundle.getString("custPantDetails");
+        searchedCustName = custDetailsBundle.getString("searchedCustName");
         
         TextView detailsField = (TextView)findViewById(R.id.textView_serchResult_CustDetails);
         detailsField.setText(details);
@@ -127,12 +129,12 @@ public class SearchCustomerResult extends Activity {
         	
 			public void onClick(View v)  {			
 											
-				deletionDialog(custNum).show();
+				deletionDialog(custNum).show();				
 				
 			}	
 		});
         
-        
+       
         
     }
     
@@ -143,9 +145,37 @@ public class SearchCustomerResult extends Activity {
     
     public void goHome(View v){
     	
-    	Intent intent = new Intent(this,Matrix.class);
-    	startActivity(intent);
+    	/*Intent intent = new Intent(this,Matrix.class);
+    	startActivity(intent);*/
     	
+        Intent parentActivityIntent = new Intent(this, Matrix.class);
+        parentActivityIntent.addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(parentActivityIntent);
+        finish();
+    	
+    }
+    
+    public void goBack(){ 
+    	
+    	if(searchedCustName != null){
+    		
+    		Bundle bundle = new Bundle();			
+			bundle.putString("custName",searchedCustName );	
+			
+    		Intent parentActivityIntent = new Intent(this, SearchCustomerByName.class);
+            /*parentActivityIntent.addFlags(
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                    Intent.FLAG_ACTIVITY_NEW_TASK);*/
+    		
+    		parentActivityIntent.putExtras(bundle);
+            startActivity(parentActivityIntent);
+            finish();
+    	}
+    	else{
+    		finish();
+    	}
     }
     
     public void cancelEit(View v){
@@ -154,8 +184,7 @@ public class SearchCustomerResult extends Activity {
 		shirtDetailsField.setEnabled(false);				
 		shirtDetailsField.setBackgroundResource(R.color.Color_steelBlue);
 		shirtDetailsField.setClickable(false);
-		
-		
+				
 		EditText pantDetailsField = (EditText)findViewById(R.id.editText_serchResult_PantDetails);		
 		pantDetailsField.setEnabled(false);
 		pantDetailsField.setBackgroundResource(R.color.Color_steelBlue);
@@ -201,7 +230,9 @@ public class SearchCustomerResult extends Activity {
 				boolean isDeleted = deleteCustomer(custNum);
 				if(isDeleted){
 					
-					Toast.makeText(Ctxt,R.string.alertTxt_SearchResult_customerDelete_success,Toast.LENGTH_LONG).show();
+					Toast.makeText(Ctxt,R.string.alertTxt_SearchResult_customerDelete_success,Toast.LENGTH_LONG).show();					
+					/* Going back home after deleting the record*/					
+					goBack();
 				}
 				else{
 					

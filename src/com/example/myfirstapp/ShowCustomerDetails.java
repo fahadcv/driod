@@ -40,19 +40,24 @@ public class ShowCustomerDetails extends Activity {
         			"\n\n\t\tTrouser Measurement: \n\t" + custPantDetails + "\n\n";  
         	
         	TextView custDetailsView = (TextView) findViewById(R.id.textView_ShowCustDetails);
-        	custDetailsView.setText(details);       	
-        	
-    		
+        	custDetailsView.setText(details);   
     	}
     	
         
     }
 
     
-    public void goHome(View v){
-    	
-    	Intent intent = new Intent(this,Matrix.class);
-    	startActivity(intent);
-    	
-    }
+	public void goHome(View v){
+	    	
+	    	/*Intent intent = new Intent(this,Matrix.class);
+	    	startActivity(intent);*/
+	    	
+	        Intent parentActivityIntent = new Intent(this, Matrix.class);
+	        parentActivityIntent.addFlags(
+	                Intent.FLAG_ACTIVITY_CLEAR_TOP |
+	                Intent.FLAG_ACTIVITY_NEW_TASK);
+	        startActivity(parentActivityIntent);
+	        finish();
+	    	
+	}
 }

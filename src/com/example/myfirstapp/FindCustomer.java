@@ -39,6 +39,7 @@ public class FindCustomer extends Activity {
 						if(custDetails.getCount()!= 0){
 							
 							Bundle details = getBundle(custDetails);
+							//details.putString("searchedCustName","");
 							
 							Intent intent = new Intent(Ctxt,SearchCustomerResult.class);				
 							/* sending the customer details to next activity 			 */
@@ -76,6 +77,7 @@ public class FindCustomer extends Activity {
 						if(custDetails.getCount()!= 0){
 							
 							Bundle details = getBundle(custDetails);
+							//details.putString("searchedCustName","");
 							
 							Intent intent = new Intent(Ctxt,SearchCustomerResult.class);				
 							/* sending the customer details to next activity 			 */

@@ -126,8 +126,8 @@ public class CustomerTable {
 	public Cursor fetchCustomerByName(String custName)throws SQLException {
 		
 		Cursor mCursor = 
-				mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME,KEY_MOBILE, KEY_ADDRESS, KEY_SHIRTDETAILS, KEY_PANTDETAILS},
-						KEY_NAME + " like '%" + custName +"%'", null, null, null, null, null);
+				mDb.query(true, DATABASE_TABLE, new String[] {KEY_NAME,KEY_ROWID,KEY_MOBILE, KEY_ADDRESS, KEY_SHIRTDETAILS, KEY_PANTDETAILS},
+						KEY_NAME + " like '%" + custName +"%'", null, null, null,"'"+ KEY_NAME+"'ASC", null);
 		if (mCursor !=null){
 			mCursor.moveToFirst();
 		}

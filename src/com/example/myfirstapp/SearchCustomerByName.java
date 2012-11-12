@@ -79,6 +79,10 @@ public class SearchCustomerByName extends Activity {
 						
 						Bundle custDetailsBundle = getBundle(custDetailsCursor);
 						
+						// keeping the search keyword for calling this activity again from 
+						//searchCustomerResult activity
+						custDetailsBundle.putString("searchedCustName",custName);
+						
 						Intent intent = new Intent(Ctxt,SearchCustomerResult.class);				
 						/* sending the customer details to next activity 			 */
 						
