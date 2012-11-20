@@ -33,6 +33,7 @@ public class ShowCustomerDetails extends Activity {
         	String custShirtDetails = newCustDetails.getString(newCustDetails.getColumnIndex(custTable.KEY_SHIRTDETAILS));
         	String custPantDetails = newCustDetails.getString(newCustDetails.getColumnIndex(custTable.KEY_PANTDETAILS));
         	
+        	// getting the string for the details
         	newCustDetails.close();
         	String details = "\t\t Details: \n\n" + "\tCustomer Number:\t"+ newCustmerNumber+ 
         			"\n\tName:\t"+ custName+"\n\tMobile:\t"+custMob+"\n\tAddress:\t"+custAdrs+
