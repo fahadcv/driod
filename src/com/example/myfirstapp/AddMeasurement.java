@@ -14,6 +14,11 @@ import android.widget.Toast;
 public class AddMeasurement extends Activity {
 	
 	Context Ctxt;
+	public static final int FLAG_SHIRT = 0;
+	public static final int FLAG_TROUSER = 1;
+	
+	int enabledEditText;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,61 +88,64 @@ public class AddMeasurement extends Activity {
     
     
     
-    public void shirtChecked(View view) {
-
-        // Create the text view
-                EditText shirtDetails = (EditText) findViewById(R.id.editText_shirtMeasurement);
-                shirtDetails.setEnabled(true); 
-                shirtDetails.setFocusable(true);
-                      
-    }
-    public void PantChecked(View view) {
-
-        // Create the text view
-                EditText PantDetails = (EditText) findViewById(R.id.editText_pantMeasurement);
-                PantDetails.setEnabled(true);
-                PantDetails.setFocusable(true);
-    }
-    public void ShirtDetailsClicked(View view) {
-
-        // Create the text view   
-		    	EditText pantDetails = (EditText) findViewById(R.id.editText_pantMeasurement);		
-		    	pantDetails.setEnabled(false);
-			
-        
-    }
-    public void PantDetailsClicked(View view) {
-
-        // Create the text view      
-		    	EditText shirtDetails = (EditText) findViewById(R.id.editText_shirtMeasurement);		
-				shirtDetails.setEnabled(false);
-				
-                
-    }
+   
     
     
-    public void btnSmIn(View view) {
+   /* public void btnSmIn(View view) {
 
         // Create the text view
     			
 
 		    	int enabledEditTextViewID = getEnabledEditTextViewID(view);    			
 		        EditText Details = (EditText) findViewById(enabledEditTextViewID);
-                /*String DetailsString = Details.getText().toString();*/
+                /*String DetailsString = Details.getText().toString();
                 Details.append("\n" + "Sm In" + "\t");                
+    }*/
+    
+    
+    public void editTextClicked(View v){
+    	
+    	int idEditText = v.getId();
+    	
+    	if(idEditText==R.id.editText_shirtMeasurement){
+    		
+    		enabledEditText = FLAG_SHIRT;
+    		Toast.makeText(Ctxt, "shirt clicked", Toast.LENGTH_SHORT).show();
+    	}
+    	else{
+    		
+    		enabledEditText = FLAG_TROUSER;
+    		Toast.makeText(Ctxt, "Pant clicked", Toast.LENGTH_SHORT).show();
+    	}    	
     }
     
-    public int getEnabledEditTextViewID(View view)
-    {	
-    	int editViewID = 0;
-    	EditText shirtEditText = (EditText) findViewById(R.id.editText_shirtMeasurement);
-    	EditText pantEditText = (EditText) findViewById(R.id.editText_pantMeasurement);
-    	if(shirtEditText.isEnabled()== true){
-    		editViewID = shirtEditText.getId();    	   		
+    public void extraBtnclick(View v){
+    	
+    	Button clickedBtn = (Button)findViewById(v.getId());    	
+    	String btnTxt = clickedBtn.getText().toString();
+    	
+    	if(btnTxt.contentEquals("Down")){
+    		
+    		btnTxt = "\n";
     	}
-    	else if(pantEditText.isEnabled()== true){
-    		editViewID = pantEditText.getId();
+    	
+    	EditText measurementField;
+    	
+    	if(enabledEditText == FLAG_SHIRT ){
+    		
+    		measurementField = (EditText)findViewById(R.id.editText_shirtMeasurement);    				
     	}
-    	return editViewID;
+    	else{
+    		
+    		measurementField = (EditText)findViewById(R.id.editText_pantMeasurement);
+    	}
+    	
+    	/*String currentMesurementText = measurementField.getText().toString();
+    	currentMesurementText = currentMesurementText + btnTxt+"\t";  */ 
+    	
+    	measurementField.append(btnTxt + "\t"); 	
+    	
     }
+    
+
 }  

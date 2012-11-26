@@ -56,5 +56,15 @@
 	<string name="mainPage_contentDesc_findCustomer">find a customer</string>
 	<string name="mainPage_contentDesc_viewAllCustomers">veiw all customers</string>
 	<string name="headerText_SearchCustByName">Customer list with name</string>
+	<string name="button_Measurement_OneByfour">&#188;</string>
+	<string name="button_Measurement_half">&#189;</string>
+	<string name="button_Measurement_threeByFour">&#190;</string>
+	<string name="button_Measurement_SmIn">Sm In</string>
+	<string name="button_Measurement_LBT">LBT</string>
+	<string name="button_Measurement_Down">Down</string>
+	<string name="button_Measurement_comma">,</string>
+	<string name="button_Measurement_leftbracket">(</string>
+	<string name="button_Measurement_rightbracket">)</string>
+	
 	
 </resources>
